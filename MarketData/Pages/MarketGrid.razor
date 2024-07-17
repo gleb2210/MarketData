@@ -1,0 +1,31 @@
+﻿@page "/"
+@using WebAssessment.ViewModels
+@using WebAssessment.Models
+@using Microsoft.AspNetCore.Components
+
+@inject MarketCache _marketCache;
+
+<PageTitle>Market Grid</PageTitle>
+
+<h1>Market Grid</h1>
+
+<div>
+  <TelerikGrid Data="@_marketCache.ShopItems"
+               EnableLoaderContainer="false"
+               Sortable="true"
+               PageSize="25"
+               Width="1200px"
+               Pageable="true"
+               FilterMode="GridFilterMode.FilterMenu"
+               >
+    <GridColumns>
+      <GridColumn Title="Name"               Width="150px"  Field="@nameof(ShopItem.Name)"/>
+      <GridColumn Title="Description"        Width="115px"  Field="@nameof(ShopItem.Description)"/>
+      <GridColumn Title="Updated"            Width="150px" Field="@nameof(ShopItem.Updated)" DisplayFormat="{0:hh.mm.ss.fff tt}"/>
+      <GridColumn Title="Best Price (Buy)"   Width="115px"  Field="@nameof(ShopItem.BestOfferPrice)"/>
+      <GridColumn Title="Quantity"           Width="115px"  Field="@nameof(ShopItem.BestOfferQuantity)"/>
+      <GridColumn Title="Best Price (Sell)"  Width="115px"  Field="@nameof(ShopItem.BestBidPrice)"/>
+      <GridColumn Title="Quantity"           Width="115px"  Field="@nameof(ShopItem.BestBidQuantity)"/>
+    </GridColumns>
+  </TelerikGrid>
+</div>
